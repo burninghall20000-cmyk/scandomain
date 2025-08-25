@@ -1,0 +1,2 @@
+dns-only://mx.apiedinudisuipruni.com
+dns-only://www.apiedinudisuipruni.com

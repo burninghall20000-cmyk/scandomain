@@ -1,0 +1,10 @@
+dns-only://autodiscover.catamaranchartermallorca.com
+dns-only://cpanel.catamaranchartermallorca.com
+dns-only://cpcalendars.catamaranchartermallorca.com
+dns-only://cpcontacts.catamaranchartermallorca.com
+dns-only://lagooncatamarancharter.catamaranchartermallorca.com
+dns-only://mail.catamaranchartermallorca.com
+dns-only://webdisk.catamaranchartermallorca.com
+dns-only://webmail.catamaranchartermallorca.com
+dns-only://www.catamaranchartermallorca.com
+dns-only://www.lagooncatamarancharter.catamaranchartermallorca.com

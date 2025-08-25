@@ -1,0 +1,2 @@
+dns-only://mail.imageglen.com
+dns-only://www.imageglen.com

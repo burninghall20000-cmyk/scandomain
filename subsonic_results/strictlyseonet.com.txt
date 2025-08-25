@@ -1,0 +1,1 @@
+dns-only://www.strictlyseonet.com

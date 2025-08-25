@@ -1,0 +1,7 @@
+dns-only://autodiscover.eleokarpos.com
+dns-only://cpanel.eleokarpos.com
+dns-only://cpcalendars.eleokarpos.com
+dns-only://cpcontacts.eleokarpos.com
+dns-only://mail.eleokarpos.com
+dns-only://webdisk.eleokarpos.com
+dns-only://www.eleokarpos.com

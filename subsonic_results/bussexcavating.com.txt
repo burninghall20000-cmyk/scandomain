@@ -1,0 +1,6 @@
+dns-only://cpanel.bussexcavating.com
+dns-only://cpcalendars.bussexcavating.com
+dns-only://cpcontacts.bussexcavating.com
+dns-only://mail.bussexcavating.com
+dns-only://webmail.bussexcavating.com
+dns-only://www.bussexcavating.com

@@ -1,0 +1,5 @@
+dns-only://mail.kokosac.com
+http://cpanel.kokosac.com
+http://ftp.kokosac.com
+http://webmail.kokosac.com
+http://www.kokosac.com

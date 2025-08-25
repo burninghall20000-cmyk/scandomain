@@ -1,0 +1,5 @@
+dns-only://cpanel.gotabagletstravel.com
+dns-only://cpcalendars.gotabagletstravel.com
+dns-only://cpcontacts.gotabagletstravel.com
+dns-only://webdisk.gotabagletstravel.com
+dns-only://www.gotabagletstravel.com

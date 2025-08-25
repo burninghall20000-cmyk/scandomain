@@ -1,0 +1,3 @@
+dns-only://en.kiovic.com
+dns-only://es.kiovic.com
+dns-only://www.kiovic.com

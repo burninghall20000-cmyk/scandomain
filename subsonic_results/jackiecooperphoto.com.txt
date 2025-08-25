@@ -1,0 +1,3 @@
+dns-only://gallery.jackiecooperphoto.com
+dns-only://mail.jackiecooperphoto.com
+dns-only://www.jackiecooperphoto.com

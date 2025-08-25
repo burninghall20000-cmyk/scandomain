@@ -1,0 +1,5 @@
+dns-only://autodiscover.dreamupadiversion.com
+dns-only://cpanel.dreamupadiversion.com
+dns-only://mail.dreamupadiversion.com
+dns-only://webmail.dreamupadiversion.com
+dns-only://www.dreamupadiversion.com

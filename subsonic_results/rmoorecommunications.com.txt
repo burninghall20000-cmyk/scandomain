@@ -1,0 +1,9 @@
+dns-only://autodiscover.rmoorecommunications.com
+dns-only://cpanel.rmoorecommunications.com
+dns-only://cpcalendars.rmoorecommunications.com
+dns-only://cpcontacts.rmoorecommunications.com
+dns-only://dc-538be41e8070.rmoorecommunications.com
+dns-only://mail.rmoorecommunications.com
+dns-only://webdisk.rmoorecommunications.com
+dns-only://webmail.rmoorecommunications.com
+dns-only://www.rmoorecommunications.com

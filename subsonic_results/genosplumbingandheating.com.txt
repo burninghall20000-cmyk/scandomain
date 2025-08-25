@@ -1,0 +1,8 @@
+dns-only://autodiscover.genosplumbingandheating.com
+dns-only://cpanel.genosplumbingandheating.com
+dns-only://cpcalendars.genosplumbingandheating.com
+dns-only://cpcontacts.genosplumbingandheating.com
+dns-only://mail.genosplumbingandheating.com
+dns-only://webdisk.genosplumbingandheating.com
+dns-only://webmail.genosplumbingandheating.com
+dns-only://www.genosplumbingandheating.com

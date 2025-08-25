@@ -1,0 +1,7 @@
+dns-only://autodiscover.bluemojofarm.com
+dns-only://cpanel.bluemojofarm.com
+dns-only://cpcalendars.bluemojofarm.com
+dns-only://cpcontacts.bluemojofarm.com
+dns-only://mail.bluemojofarm.com
+dns-only://webmail.bluemojofarm.com
+dns-only://www.bluemojofarm.com

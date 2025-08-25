@@ -1,0 +1,11 @@
+dns-only://autodiscover.back2schoolri.com
+dns-only://back2schoolri.back2schoolri.com
+dns-only://backtoschoolri.back2schoolri.com
+dns-only://backtoschoolriorg.back2schoolri.com
+dns-only://cpanel.back2schoolri.com
+dns-only://mail.back2schoolri.com
+dns-only://webmail.back2schoolri.com
+dns-only://www.back2schoolri.back2schoolri.com
+dns-only://www.back2schoolri.com
+dns-only://www.backtoschoolri.back2schoolri.com
+dns-only://www.backtoschoolriorg.back2schoolri.com

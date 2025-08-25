@@ -1,0 +1,7 @@
+dns-only://autodiscover.honorsales.com
+dns-only://cpanel.honorsales.com
+dns-only://cpcalendars.honorsales.com
+dns-only://cpcontacts.honorsales.com
+dns-only://webdisk.honorsales.com
+dns-only://webmail.honorsales.com
+dns-only://www.honorsales.com

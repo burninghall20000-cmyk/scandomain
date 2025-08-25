@@ -1,0 +1,8 @@
+http://autodiscover.pasiaalto.com
+http://cpanel.pasiaalto.com
+http://cpcalendars.pasiaalto.com
+http://cpcontacts.pasiaalto.com
+http://mail.pasiaalto.com
+http://webdisk.pasiaalto.com
+http://webmail.pasiaalto.com
+http://www.pasiaalto.com

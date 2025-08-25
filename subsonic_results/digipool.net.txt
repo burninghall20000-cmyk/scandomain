@@ -1,0 +1,7 @@
+dns-only://cpanel.digipool.net
+dns-only://cpcalendars.digipool.net
+dns-only://cpcontacts.digipool.net
+dns-only://mail.digipool.net
+dns-only://webdisk.digipool.net
+dns-only://webmail.digipool.net
+dns-only://www.digipool.net

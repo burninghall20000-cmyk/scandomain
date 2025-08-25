@@ -1,0 +1,14 @@
+dns-only://82943631-c99a-4033-807d-2a65c0bcb02d.tamaya-diyled-shop.com
+dns-only://m.tamaya-diyled-shop.com
+dns-only://staging.tamaya-diyled-shop.com
+dns-only://uat.tamaya-diyled-shop.com
+dns-only://www.vpn.tamaya-diyled-shop.com
+http://backup.tamaya-diyled-shop.com
+http://dev.tamaya-diyled-shop.com
+http://vpn.tamaya-diyled-shop.com
+http://www.backup.tamaya-diyled-shop.com
+http://www.dev.tamaya-diyled-shop.com
+http://www.m.tamaya-diyled-shop.com
+http://www.tamaya-diyled-shop.com
+http://www.uat.tamaya-diyled-shop.com
+https://ww7.tamaya-diyled-shop.com

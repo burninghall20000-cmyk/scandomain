@@ -1,0 +1,4 @@
+dns-only://admin.messbyus.com
+dns-only://hostmaster.messbyus.com
+dns-only://ww1.messbyus.com
+dns-only://www.messbyus.com

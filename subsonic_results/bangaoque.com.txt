@@ -1,0 +1,7 @@
+dns-only://webdisk.bangaoque.com
+dns-only://webmail.bangaoque.com
+dns-only://www.bangaoque.com
+http://cpanel.bangaoque.com
+http://cpcalendars.bangaoque.com
+http://cpcontacts.bangaoque.com
+http://mail.bangaoque.com

@@ -1,0 +1,2 @@
+dns-only://play.barststudios.com
+dns-only://www.barststudios.com

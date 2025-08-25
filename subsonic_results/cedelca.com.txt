@@ -1,0 +1,2 @@
+dns-only://orfeo.cedelca.com
+dns-only://www.cedelca.com

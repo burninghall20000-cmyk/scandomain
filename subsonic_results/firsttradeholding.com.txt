@@ -1,0 +1,8 @@
+dns-only://autodiscover.firsttradeholding.com
+dns-only://cpanel.firsttradeholding.com
+dns-only://cpcalendars.firsttradeholding.com
+dns-only://cpcontacts.firsttradeholding.com
+dns-only://mail.firsttradeholding.com
+dns-only://webdisk.firsttradeholding.com
+dns-only://webmail.firsttradeholding.com
+dns-only://www.firsttradeholding.com

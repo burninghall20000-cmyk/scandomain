@@ -1,0 +1,8 @@
+http://autodiscover.edlinx.org
+http://cpanel.edlinx.org
+http://cpcalendars.edlinx.org
+http://cpcontacts.edlinx.org
+http://mail.edlinx.org
+http://webdisk.edlinx.org
+http://webmail.edlinx.org
+http://www.edlinx.org

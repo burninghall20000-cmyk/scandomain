@@ -1,0 +1,4 @@
+dns-only://mail.futureprooffestival.com
+dns-only://new.futureprooffestival.com
+dns-only://www.futureprooffestival.com
+dns-only://www.new.futureprooffestival.com

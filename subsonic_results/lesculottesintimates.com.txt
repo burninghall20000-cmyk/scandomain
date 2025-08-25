@@ -1,0 +1,2 @@
+dns-only://mail.lesculottesintimates.com
+dns-only://www.lesculottesintimates.com

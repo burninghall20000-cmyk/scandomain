@@ -1,0 +1,5 @@
+dns-only://key.platform-escrow.origamienergy.com
+dns-only://portal-escrow.origamienergy.com
+dns-only://portal-staging.origamienergy.com
+dns-only://portal.origamienergy.com
+dns-only://www.origamienergy.com

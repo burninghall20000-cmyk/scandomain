@@ -1,0 +1,7 @@
+dns-only://company.white-stage.com
+dns-only://mail.white-stage.com
+dns-only://www.white-stage.com
+http://c5demo.white-stage.com
+http://d2d2016.white-stage.com
+http://ns2.white-stage.com
+http://testc5.white-stage.com

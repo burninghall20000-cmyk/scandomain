@@ -1,0 +1,14 @@
+dns-only://autodiscover.thehistoricvinewood.com
+dns-only://cpanel.thehistoricvinewood.com
+dns-only://cpcalendars.thehistoricvinewood.com
+dns-only://cpcontacts.thehistoricvinewood.com
+dns-only://grad.thehistoricvinewood.com
+dns-only://hartnerprior.thehistoricvinewood.com
+dns-only://mail.thehistoricvinewood.com
+dns-only://webdisk.thehistoricvinewood.com
+dns-only://webmail.thehistoricvinewood.com
+dns-only://wedding.thehistoricvinewood.com
+dns-only://www.gonzales.thehistoricvinewood.com
+dns-only://www.grad.thehistoricvinewood.com
+dns-only://www.hartnerprior.thehistoricvinewood.com
+dns-only://www.thehistoricvinewood.com

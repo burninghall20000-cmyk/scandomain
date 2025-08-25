@@ -1,0 +1,8 @@
+dns-only://autodiscover.eventzplannerz.com
+dns-only://cpanel.eventzplannerz.com
+dns-only://cpcalendars.eventzplannerz.com
+dns-only://cpcontacts.eventzplannerz.com
+dns-only://mail.eventzplannerz.com
+dns-only://webdisk.eventzplannerz.com
+dns-only://webmail.eventzplannerz.com
+dns-only://www.eventzplannerz.com

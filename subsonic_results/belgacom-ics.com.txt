@@ -1,0 +1,1 @@
+dns-only://www.belgacom-ics.com

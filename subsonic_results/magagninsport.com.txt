@@ -1,0 +1,2 @@
+dns-only://mx.magagninsport.com
+dns-only://www.magagninsport.com

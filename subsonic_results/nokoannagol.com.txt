@@ -1,0 +1,2 @@
+dns-only://tools.nokoannagol.com
+dns-only://www.nokoannagol.com

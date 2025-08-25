@@ -1,0 +1,17 @@
+dns-only://blossom.suinternet.com
+dns-only://demo.shop.suinternet.com
+dns-only://demo.suinternet.com
+dns-only://dev.shop.suinternet.com
+dns-only://dev.suinternet.com
+dns-only://magento.blossom.suinternet.com
+dns-only://magento.shop.suinternet.com
+dns-only://magento.suinternet.com
+dns-only://shop.blossom.suinternet.com
+dns-only://shop.suinternet.com
+dns-only://staging.suinternet.com
+dns-only://store.blossom.suinternet.com
+dns-only://store.shop.suinternet.com
+dns-only://store.suinternet.com
+dns-only://test.shop.suinternet.com
+dns-only://www.blossom.suinternet.com
+dns-only://www.suinternet.com

@@ -1,0 +1,6 @@
+dns-only://cpanel.dailongbongban.com
+http://autodiscover.dailongbongban.com
+http://mail.dailongbongban.com
+http://ns1.tenten.vn.dailongbongban.com
+http://webmail.dailongbongban.com
+http://www.dailongbongban.com

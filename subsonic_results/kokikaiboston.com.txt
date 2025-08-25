@@ -1,0 +1,2 @@
+dns-only://dns.kokikaiboston.com
+dns-only://www.kokikaiboston.com

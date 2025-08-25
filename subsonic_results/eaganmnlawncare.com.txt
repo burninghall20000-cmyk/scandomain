@@ -1,0 +1,6 @@
+dns-only://autodiscover.eaganmnlawncare.com
+dns-only://cpanel.eaganmnlawncare.com
+dns-only://mail.eaganmnlawncare.com
+dns-only://webdisk.eaganmnlawncare.com
+dns-only://webmail.eaganmnlawncare.com
+dns-only://www.eaganmnlawncare.com

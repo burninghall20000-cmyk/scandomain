@@ -1,0 +1,3 @@
+dns-only://mail.fklt.com
+dns-only://secure.fklt.com
+dns-only://www.fklt.com

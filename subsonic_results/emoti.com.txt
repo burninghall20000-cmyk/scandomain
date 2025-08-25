@@ -1,0 +1,3 @@
+dns-only://mail.emoti.com
+dns-only://smiley.emoti.com
+dns-only://www.emoti.com

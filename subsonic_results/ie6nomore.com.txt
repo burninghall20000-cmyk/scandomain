@@ -1,0 +1,1 @@
+dns-only://www.ie6nomore.com

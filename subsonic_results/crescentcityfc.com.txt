@@ -1,0 +1,8 @@
+http://autodiscover.crescentcityfc.com
+http://cpanel.crescentcityfc.com
+http://cpcalendars.crescentcityfc.com
+http://cpcontacts.crescentcityfc.com
+http://mail.crescentcityfc.com
+http://webdisk.crescentcityfc.com
+http://webmail.crescentcityfc.com
+http://www.crescentcityfc.com

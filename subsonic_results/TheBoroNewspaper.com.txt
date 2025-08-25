@@ -1,0 +1,8 @@
+dns-only://autodiscover.theboronewspaper.com
+dns-only://cpanel.theboronewspaper.com
+dns-only://cpcalendars.theboronewspaper.com
+dns-only://cpcontacts.theboronewspaper.com
+dns-only://mail.theboronewspaper.com
+dns-only://webdisk.theboronewspaper.com
+dns-only://webmail.theboronewspaper.com
+dns-only://www.theboronewspaper.com

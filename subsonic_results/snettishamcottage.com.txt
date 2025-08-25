@@ -1,0 +1,3 @@
+dns-only://mail.snettishamcottage.com
+dns-only://mta-sts.mail.snettishamcottage.com
+dns-only://www.snettishamcottage.com

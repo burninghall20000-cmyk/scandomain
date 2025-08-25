@@ -1,0 +1,5 @@
+http://admin.adelnur.com
+http://api.adelnur.com
+http://backup.adelnur.com
+http://demo.adelnur.com
+http://www.adelnur.com

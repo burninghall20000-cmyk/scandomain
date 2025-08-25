@@ -1,0 +1,5 @@
+dns-only://hostmaster.brentseifert.com
+dns-only://mail.brentseifert.com
+dns-only://mbox.brentseifert.com
+dns-only://mta-sts.mail.brentseifert.com
+dns-only://www.brentseifert.com

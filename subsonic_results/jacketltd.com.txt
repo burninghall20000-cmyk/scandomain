@@ -1,0 +1,7 @@
+dns-only://cpanel.jacketltd.com
+dns-only://cpcalendars.jacketltd.com
+dns-only://cpcontacts.jacketltd.com
+dns-only://mail.jacketltd.com
+dns-only://webdisk.jacketltd.com
+dns-only://webmail.jacketltd.com
+dns-only://www.jacketltd.com

@@ -1,0 +1,3 @@
+dns-only://mail1.office.renovacapital.com
+dns-only://office.renovacapital.com
+dns-only://www.renovacapital.com

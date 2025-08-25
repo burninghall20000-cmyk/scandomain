@@ -1,0 +1,3 @@
+dns-only://mail.firesidemethuen.com
+dns-only://webmail.firesidemethuen.com
+dns-only://www.firesidemethuen.com

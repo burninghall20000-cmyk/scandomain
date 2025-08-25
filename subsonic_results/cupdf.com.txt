@@ -1,0 +1,2 @@
+dns-only://mail.cupdf.com
+dns-only://www.cupdf.com

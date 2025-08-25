@@ -1,0 +1,3 @@
+dns-only://autodiscover.tenayacreek.com
+dns-only://webmail.tenayacreek.com
+dns-only://www.tenayacreek.com

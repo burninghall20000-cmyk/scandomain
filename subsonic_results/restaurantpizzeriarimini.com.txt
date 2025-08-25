@@ -1,0 +1,1 @@
+dns-only://mx.restaurantpizzeriarimini.com

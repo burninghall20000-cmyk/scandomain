@@ -1,0 +1,2 @@
+dns-only://mx.casedipalma.com
+dns-only://www.casedipalma.com

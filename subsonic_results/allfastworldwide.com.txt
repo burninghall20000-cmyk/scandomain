@@ -1,0 +1,4 @@
+dns-only://autodiscover.allfastworldwide.com
+dns-only://cpanel.allfastworldwide.com
+dns-only://webmail.allfastworldwide.com
+dns-only://www.allfastworldwide.com

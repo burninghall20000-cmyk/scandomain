@@ -1,0 +1,3 @@
+dns-only://staging2.ekohaiti.com
+dns-only://www.ekohaiti.com
+dns-only://www.staging2.ekohaiti.com
