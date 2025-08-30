@@ -1,206 +1,162 @@
 #!/usr/bin/env python3
 """
-SUBSONIC v3.1 - High Accuracy Subdomain Scanner + Wayback History
+Simple Subdomain Scanner + Wayback History
 Author: AI Assistant
-Features:
-- DNS parallel (A/CNAME/AAAA/MX)
-- HTTP/HTTPS probe
-- Multi-source subdomain collection (crt.sh, RapidDNS)
-- Live Wayback Machine check (2 years)
-- Progress bar & summary file
 """
 
-import re
-import requests
-import os
-import json
-import time
-import threading
-import dns.resolver
+import re, requests, os, json, time, threading, dns.resolver
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from urllib.parse import urlparse
 from rich.console import Console
-from rich.progress import Progress, BarColumn, TextColumn, TimeRemainingColumn
-from rich.panel import Panel
-from rich import print as rprint
+from rich.table import Table
 
 console = Console()
-RESULT_FOLDER = "subsonic_results"
+RESULT_FOLDER = "results"
 os.makedirs(RESULT_FOLDER, exist_ok=True)
 SUMMARY_FILE = os.path.join(RESULT_FOLDER, "all_live_subdomains.txt")
-CACHE_FILE = os.path.join(RESULT_FOLDER, "subdomain_cache.json")
 thread_local = threading.local()
 
-# ===== Thread session =====
-def get_thread_session():
+# ==== Session ====
+def get_session():
     if not hasattr(thread_local, "session"):
-        thread_local.session = requests.Session()
+        session = requests.Session()
         adapter = requests.adapters.HTTPAdapter(pool_connections=100, pool_maxsize=200)
-        thread_local.session.mount('http://', adapter)
-        thread_local.session.mount('https://', adapter)
-        thread_local.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        })
-        thread_local.session.timeout = 3
+        session.mount("http://", adapter)
+        session.mount("https://", adapter)
+        session.headers.update({"User-Agent": "Mozilla/5.0"})
+        thread_local.session = session
     return thread_local.session
 
-def fetch_url(url, timeout=5):
-    try:
-        return get_thread_session().get(url, timeout=timeout).text
-    except:
-        return ""
+def fetch(url, timeout=5):
+    try: return get_session().get(url, timeout=timeout).text
+    except: return ""
 
-# ===== Validasi subdomain =====
-def valid_subdomain(sub, domain):
-    pattern = r"^[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?(\.[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?)*$"
-    return sub.endswith(f".{domain}") and re.match(pattern, sub.lower())
-
-def clean_subdomain(sub, domain):
+# ==== Clean subdomain ====
+def clean_sub(sub, domain):
     sub = sub.lower().strip()
     sub = re.sub(r"^\*\.", "", sub)
     sub = re.sub(r"^\.+|\.+$", "", sub)
-    return sub if valid_subdomain(sub, domain) else None
+    if sub.endswith(f".{domain}"): return sub
+    return None
 
-# ===== DNS Resolver =====
-def setup_dns_resolver():
-    resolver = dns.resolver.Resolver(configure=False)
-    resolver.nameservers = ['8.8.8.8','1.1.1.1','8.8.4.4','1.0.0.1','9.9.9.9']
-    resolver.timeout = 1
-    resolver.lifetime = 1
-    return resolver
+# ==== DNS ====
+def setup_resolver():
+    r = dns.resolver.Resolver(configure=False)
+    r.nameservers = ["8.8.8.8","1.1.1.1","8.8.4.4","1.0.0.1"]
+    r.timeout = 1; r.lifetime = 1
+    return r
 
-def dns_resolve(sub, resolver):
+def dns_resolve(sub, r):
     try:
-        for rtype in ['A','CNAME','AAAA','MX']:
+        for t in ["A","CNAME","AAAA","MX"]:
             try:
-                answers = resolver.resolve(sub, rtype, raise_on_no_answer=False)
-                if answers.rrset:
-                    return True
-            except:
-                continue
-    except:
-        return False
+                ans = r.resolve(sub, t, raise_on_no_answer=False)
+                if ans.rrset: return True
+            except: continue
+    except: return False
     return False
 
-# ===== Subdomain sources =====
-def get_subdomains_from_crtsh(domain):
-    url = f"https://crt.sh/?q=%25.{domain}&output=json"
-    text = fetch_url(url)
-    subs = set()
+# ==== Sources ====
+def crtsh(domain):
+    subs=set(); text=fetch(f"https://crt.sh/?q=%25.{domain}&output=json")
     try:
-        data = json.loads(text)
-        for item in data:
-            for field in ['name_value','common_name']:
-                values = str(item.get(field,'')).split('\n')
-                for v in values:
-                    c = clean_subdomain(v, domain)
+        for item in json.loads(text):
+            for f in ["name_value","common_name"]:
+                for v in str(item.get(f,"")).split("\n"):
+                    c=clean_sub(v,domain); 
                     if c: subs.add(c)
     except: pass
     return subs
 
-def get_subdomains_from_rapiddns(domain):
-    text = fetch_url(f"https://rapiddns.io/subdomain/{domain}?full=1")
-    subs = set()
-    if text:
-        pattern = re.compile(rf">([a-z0-9._-]+\.{re.escape(domain)})<", re.I)
-        for match in pattern.findall(text):
-            c = clean_subdomain(match, domain)
-            if c: subs.add(c)
+def rapiddns(domain):
+    subs=set(); text=fetch(f"https://rapiddns.io/subdomain/{domain}?full=1")
+    for m in re.findall(rf">([a-z0-9._-]+\.{re.escape(domain)})<", text, re.I):
+        c=clean_sub(m,domain); 
+        if c: subs.add(c)
     return subs
 
-SOURCES = [get_subdomains_from_crtsh, get_subdomains_from_rapiddns]
+def jldc(domain):
+    subs=set(); text=fetch(f"https://jldc.me/anubis/subdomains/{domain}")
+    try:
+        for v in json.loads(text):
+            c=clean_sub(v,domain); 
+            if c: subs.add(c)
+    except: pass
+    return subs
 
-# ===== Probing =====
-def probe_subdomain(sub, resolver):
-    if dns_resolve(sub, resolver):
+def threatcrowd(domain):
+    subs=set(); text=fetch(f"https://www.threatcrowd.org/searchApi/v2/domain/report/?domain={domain}")
+    try:
+        for v in json.loads(text).get("subdomains",[]):
+            c=clean_sub(v,domain); 
+            if c: subs.add(c)
+    except: pass
+    return subs
+
+SOURCES=[crtsh,rapiddns,jldc,threatcrowd]
+
+# ==== Probe + Wayback ====
+def probe(sub, resolver):
+    if dns_resolve(sub,resolver):
         for scheme in ["https://","http://"]:
             try:
-                resp = get_thread_session().head(f"{scheme}{sub}", timeout=3, allow_redirects=True)
-                if resp.status_code < 400: return f"{scheme}{sub}"
-            except:
-                continue
-        return f"dns-only://{sub}"
+                r=get_session().head(f"{scheme}{sub}",timeout=3,allow_redirects=True)
+                if r.status_code<400: return f"{scheme}{sub}"
+            except: continue
     return None
 
-# ===== Wayback Machine Check =====
-def check_wayback(subdomain, years=2):
+def wayback(sub,years=2):
     try:
-        url = f"http://archive.org/wayback/available?url={subdomain}"
-        data = get_thread_session().get(url, timeout=5).json()
-        archived_snap = data.get('archived_snapshots', {}).get('closest', {})
-        if archived_snap:
-            timestamp = archived_snap.get('timestamp')
-            if timestamp and int(timestamp[:4]) >= int(time.strftime("%Y")) - years:
-                return archived_snap.get('url')
-    except:
-        pass
+        url=f"http://archive.org/wayback/available?url={sub}"
+        data=get_session().get(url,timeout=5).json()
+        snap=data.get("archived_snapshots",{}).get("closest",{})
+        if snap:
+            ts=snap.get("timestamp")
+            if ts and int(ts[:4])>=int(time.strftime("%Y"))-years:
+                return snap.get("url")
+    except: pass
     return None
 
-# ===== Scan domain =====
-def scan_domain(domain):
-    console.print(Panel.fit(f"[cyan]Scanning: {domain}[/cyan]", border_style="green"))
-    start = time.time()
-    resolver = setup_dns_resolver()
-    all_subs = set()
-    
-    # Ambil subdomain dari semua source
-    with ThreadPoolExecutor(max_workers=len(SOURCES)) as executor:
-        futures = {executor.submit(s, domain): s.__name__ for s in SOURCES}
-        for f in as_completed(futures):
-            all_subs.update(f.result())
-    
-    console.print(f"[bold]Collected subdomains:[/bold] {len(all_subs)}")
-    live_subs = []
-    
-    # Probe dan cek Wayback
-    with Progress(TextColumn("[progress.description]{task.description}"), BarColumn(),
-                  TextColumn("[progress.percentage]{task.percentage:>3.0f}%"), TimeRemainingColumn()) as progress:
-        task = progress.add_task("Probing...", total=len(all_subs))
-        with ThreadPoolExecutor(max_workers=100) as executor:
-            future_to_sub = {executor.submit(probe_subdomain, s, resolver): s for s in all_subs}
-            for future in as_completed(future_to_sub):
-                progress.update(task, advance=1)
-                res = future.result()
-                if res:
-                    live_subs.append(res)
-                    # Cek Wayback Machine
-                    wayback_url = check_wayback(res)
-                    if wayback_url:
-                        console.print(f"[yellow]Wayback found:[/yellow] {res} -> {wayback_url}")
+# ==== Main scan ====
+def scan(domain):
+    console.print(f"[cyan]Scanning {domain}...[/cyan]")
+    resolver=setup_resolver()
+    allsubs=set()
 
-    elapsed = time.time()-start
-    console.print(f"[green]✓ {len(live_subs)} live subdomains found in {elapsed:.2f}s[/green]")
-    
-    # Simpan hasil
-    with open(os.path.join(RESULT_FOLDER,f"{domain}.txt"), "w") as f:
-        [f.write(s+"\n") for s in sorted(live_subs)]
-    with open(SUMMARY_FILE, "a") as f:
-        [f.write(s+"\n") for s in live_subs]
-    
-    return live_subs
+    # collect
+    with ThreadPoolExecutor(max_workers=len(SOURCES)) as ex:
+        fut={ex.submit(s,domain):s.__name__ for s in SOURCES}
+        for f in as_completed(fut): allsubs.update(f.result())
 
-# ===== Main =====
+    console.print(f"Collected: {len(allsubs)} subdomains")
+    results=[]
+
+    # probe
+    with ThreadPoolExecutor(max_workers=50) as ex:
+        fut={ex.submit(probe,s,resolver):s for s in allsubs}
+        for f in as_completed(fut):
+            sub=fut[f]; live=f.result(); wb=None; status="Dead"
+            if live: status="Live"; wb=wayback(live)
+            results.append((sub,live,status,wb))
+
+    # output table
+    table=Table(title=f"Results for {domain}")
+    table.add_column("#"); table.add_column("Subdomain"); table.add_column("Status"); table.add_column("Wayback")
+    for i,(sub,live,status,wb) in enumerate(sorted(results),1):
+        table.add_row(str(i),live or sub,status,wb or "-")
+    console.print(table)
+
+    # save live
+    lives=[live for _,live,s,_ in results if live]
+    with open(os.path.join(RESULT_FOLDER,f"{domain}.txt"),"w") as f:
+        [f.write(l+"\n") for l in sorted(lives)]
+    with open(SUMMARY_FILE,"a") as f:
+        [f.write(l+"\n") for l in lives]
+
 def main():
-    rprint(Panel.fit("[bold blue]SUBSONIC v3.1 - Accurate Subdomain Scanner[/bold blue]", subtitle="[green]Fast, Precise & Wayback Enabled[/green]"))
-    
     if not os.path.exists("domains.txt"):
-        console.print("[red]Error:[/red] File domains.txt tidak ditemukan!"); return
-    
-    domains = [re.sub(r"^https?://(www\.)?|^www\.", "", d.strip()) for d in open("domains.txt") if d.strip()]
-    if not domains:
-        console.print("[red]Error:[/red] Tidak ada domain valid!"); return
-    
+        console.print("[red]File domains.txt not found![/red]"); return
     if os.path.exists(SUMMARY_FILE): os.remove(SUMMARY_FILE)
-    
-    all_results = {}
-    total_start = time.time()
-    for domain in domains:
-        all_results[domain] = scan_domain(domain)
-        console.print("")
-    
-    total_time = time.time()-total_start
-    total_live = sum(len(v) for v in all_results.values())
-    console.print(Panel.fit(f"[bold]SCAN SUMMARY[/bold]\nTotal live subdomains: {total_live}\nTime: {total_time:.2f}s\nResults: {SUMMARY_FILE}", border_style="blue"))
+    domains=[re.sub(r"^https?://(www\.)?|^www\.","",d.strip()) for d in open("domains.txt") if d.strip()]
+    for d in domains: scan(d)
 
-if __name__=="__main__":
-    main()
+if __name__=="__main__": main()
